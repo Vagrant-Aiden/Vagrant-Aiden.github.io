@@ -194,6 +194,11 @@
                     </div>
                     
                     
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
                   </div>
                 </span>
               </span>
@@ -270,6 +275,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/10/06/hexo-yilia-valine+leancould-极简的评论系统/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          hexo yilia valine+leancloud 极简的评论系统
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/10/05/markdown的基本语法/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Markdown的基本语法</div>
@@ -305,7 +319,36 @@
 
   
 
+
+
   
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments{margin:30px;padding:10px;background:#fff}
+    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+  </style>
+  <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "LmPJTjLelnFJvkXGPwnBaW8v-gzGzoHsz",
+            app_key: "fE9hl1Eml4lIum2QK22sAb5a",
+            placeholder: "Just go go",
+            avatar:"mm"
+        });
+    }
+</script>
+
+  </section>
 
 
           </div>
@@ -390,6 +433,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">yilia评论系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">valine+leancloud</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
