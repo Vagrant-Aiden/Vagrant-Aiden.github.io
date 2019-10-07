@@ -16,10 +16,14 @@
 <meta property="og:site_name" content="Aiden&#39;s blog">
 <meta property="og:description" content="前言鼓捣了十一期间好几天hexo yilia主题的个人博客 几天想给博客添加一个评论系统，在百度上找到了一个简单的教程，记录一下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-06T07:33:58.188Z">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/H106e81a7614b4bbcbceff03fc8044d1ci.png">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/H396d3369443c4894bba308c1e984acc67.png">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/He0d62b86a21941468d331035d3495453x.png">
+<meta property="og:updated_time" content="2019-10-07T03:32:32.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo yilia valine+leancloud 极简的评论系统">
 <meta name="twitter:description" content="前言鼓捣了十一期间好几天hexo yilia主题的个人博客 几天想给博客添加一个评论系统，在百度上找到了一个简单的教程，记录一下">
+<meta name="twitter:image" content="https://ae01.alicdn.com/kf/H106e81a7614b4bbcbceff03fc8044d1ci.png">
   
     <link rel="alternative" href="/atom.xml" title="Aiden&#39;s blog" type="application/atom+xml">
   
@@ -167,15 +171,36 @@
 <a id="more"></a>
 <hr>
 <h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><ol>
-<li><p>申请个leancloud账号</p>
+<li><p>申请个leancloud账号<br>打开leancloud<a href="https://leancloud.cn/" target="_blank" rel="noopener">官网</a>，注册一个账号</p>
 </li>
-<li><p>身份验证和邮箱验证</p>
+<li><p>身份验证和邮箱验证<br>点击右上角你的用户名-&gt;账号设置-&gt;邮箱   进行邮箱认证<br>点击右上角你的用户名-&gt;-账号设置&gt;实名认证 进行实名认证</p>
 </li>
-<li><p>项目</p>
-</li>
-<li><p>文件配置</p>
+<li><p>创建项目项目</p>
 </li>
 </ol>
+<ul>
+<li>选择创建应用<br><img src="https://ae01.alicdn.com/kf/H106e81a7614b4bbcbceff03fc8044d1ci.png" alt></li>
+<li>写入应用名称 选择开发版<br><img src="https://ae01.alicdn.com/kf/H396d3369443c4894bba308c1e984acc67.png" alt></li>
+<li>点击进入你的应用找到你的appKey和appID<br><img src="https://ae01.alicdn.com/kf/He0d62b86a21941468d331035d3495453x.png" alt></li>
+</ul>
+<ol start="4">
+<li>文件配置</li>
+</ol>
+<ul>
+<li><p>在 /themes/yilia/_config.yml的尾部加入Valine的相关配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#6、Valine https://valine.js.org</span><br><span class="line">valine: </span><br><span class="line"> appid:  #Leancloud应用的appId</span><br><span class="line"> appkey:  #Leancloud应用的appKey</span><br><span class="line"> verify: false #验证码</span><br><span class="line"> notify: false #评论回复提醒</span><br><span class="line"> avatar: mm #评论列表头像样式：&apos;&apos;/mm/identicon/monsterid/wavatar/retro/hide</span><br><span class="line"> placeholder: Just go go #评论框占位符</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在/themes/yilia/layout/_partial/article.ejs中加入Valine</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.valine &amp;&amp; theme.valine.appid &amp;&amp; theme.valine.appkey)&#123; %&gt;</span><br><span class="line">&lt;section id=&quot;comments&quot; class=&quot;comments&quot;&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .comments&#123;margin:30px;padding:10px;background:#fff&#125;</span><br><span class="line">    @media screen and (max-width:800px)&#123;.comments&#123;margin:auto;padding:10px;background:#fff&#125;&#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">  &lt;%- partial(&apos;post/valine&apos;, &#123;</span><br><span class="line">    key: post.slug,</span><br><span class="line">    title: post.title,</span><br><span class="line">    url: config.url+url_for(post.path)</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这里对样式进行了修改，改成了响应式布局，宽度自动和上面的文章部分对齐。</p>
+<ul>
+<li>在themes/yilia/layout/_partial/post中创建一个valine.ejs文件夹,加入Valine的方法。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;vcomment&quot; class=&quot;comment&quot;&gt;&lt;/div&gt; </span><br><span class="line">&lt;script src=&quot;//cdn1.lncld.net/static/js/3.0.4/av-min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;//unpkg.com/valine/dist/Valine.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">   var notify = &apos;&lt;%= theme.valine.notify %&gt;&apos; == true ? true : false;</span><br><span class="line">   var verify = &apos;&lt;%= theme.valine.verify %&gt;&apos; == true ? true : false;</span><br><span class="line">    window.onload = function() &#123;</span><br><span class="line">        new Valine(&#123;</span><br><span class="line">            el: &apos;.comment&apos;,</span><br><span class="line">            notify: notify,</span><br><span class="line">            verify: verify,</span><br><span class="line">            app_id: &quot;&lt;%= theme.valine.appid %&gt;&quot;,</span><br><span class="line">            app_key: &quot;&lt;%= theme.valine.appkey %&gt;&quot;,</span><br><span class="line">            placeholder: &quot;&lt;%= theme.valine.placeholder %&gt;&quot;,</span><br><span class="line">            avatar:&quot;&lt;%= theme.valine.avatar %&gt;&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 <hr>
 
       
